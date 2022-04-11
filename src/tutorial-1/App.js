@@ -1,7 +1,3 @@
-import React from 'react';
-import logo from './logo.svg';
-
-
 function formatDate(date){ 
   return date.toLocaleDateString('ru',{day:"numeric", month:"long", year:"numeric"})
 }

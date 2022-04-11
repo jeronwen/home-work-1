@@ -1,23 +1,36 @@
+import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+
+
+function formatDate(date){ 
+  return date.toLocaleDateString('ru',{day:"numeric", month:"long", year:"numeric"})
+}
+
+const ProfileFunc = (props) =>{
+  return(
+    <div>
+      <p style={{fontSize: 32}}>Привет, <b>{props.name}!</b></p>
+      <p style={{fontSize: 28}}>Дата регистрации: {formatDate(props.registredAt)}</p>
+    </div>
+  )  
+}
+
+class ProfileClass extends React.Component{
+  render(){
+    return(
+      <div>
+        <p style={{fontSize: 32}}>Привет, <b>{this.props.name}!</b></p>
+        <p style={{fontSize: 28}}>Дата регистрации: {formatDate(this.props.registredAt)}</p>
+      </div>
+    )
+  }
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ProfileFunc name="Вася Пупкин" registredAt={new Date(2021, 5, 22)} />
+      <ProfileClass name="Вася Пупкин" registredAt={new Date(2021, 5, 22)} />
     </div>
   );
 }

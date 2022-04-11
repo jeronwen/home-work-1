@@ -1,3 +1,5 @@
+import React from 'react';
+
 function formatDate(date){ 
   return date.toLocaleDateString('ru',{day:"numeric", month:"long", year:"numeric"})
 }

@@ -40,7 +40,7 @@ function App(){
         <form onSubmit={handleSubmit} className='App'>
             <input value={email} onChange={handleChange} style={{margin:'5px'}} type="text" placeholder="E-Mail"></input>
             <input value={password} onChange={handleChange} style={{margin:'5px'}} type="password" placeholder="Пароль"></input>
-            <button style={{margin:'5px'}} type='submit' onClick={()=>{}} >Войти</button>
+            <button style={{margin:'5px'}} type='submit'>Войти</button>
         </form>
     )
 }

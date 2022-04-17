@@ -4,7 +4,7 @@ import React from 'react';
 
 
 
-const Tab =()=>{
+ const Tab =()=>{
     
 
     
@@ -34,40 +34,35 @@ const Tab =()=>{
          },
      ];
     const [activeId, setActiveId] = React.useState();
-    
-    const [activeTab, setActiveTab] = React.useState('');  
-    //let activDiv = ''
 
     const activateTab=(event)=>{
         setActiveId(event.target.id)
-        tabsData.map((tabData)=>{
-            console.log(tabData.id + ' ' + activeId)
-            console.log(activeTab)
-            if(tabData.id===activeId){
-                //console.log(activeTab)
-                setActiveTab('active')
-                return console.log(activeTab)
-            }else{
-                //console.log(activeTab)
-                setActiveTab('')
-            }
-        })
     }
+
+    let setActiveTab =(id)=>{
+       if(activeId == id){
+        return "tab active"
+       }else{
+        return "tab"
+       }
+    }
+    
     
     return(
         
         tabsData.map((tabData)=>
-        <div key={tabData.id} class={'tab '+ activeTab}>
-        <input id="tab-one" type="checkbox" name="tabs" />
+        <div key={tabData.id} className={setActiveTab(tabData.id)}>
+        <input id="tab-one" type="checkbox" className="tabs" />
         <label id={tabData.id} onClick={activateTab} for="tab-one">{tabData.title}</label>
-            <div class="tab-content">
+            <div className="tab-content">
                 <p>
                     {tabData.description}
                 </p>
             </div>
         </div>
      ));
- };
+ }; 
+
 function App(){
     
     return(

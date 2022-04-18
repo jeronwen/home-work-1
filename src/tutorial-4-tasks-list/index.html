@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Список задач</title>
+    </head>
+
+    <body>
+
+        <div>
+            <ul id="tasks">
+            </ul>
+        </div>
+
+        <div class="add tasks">
+            <input id="taskInput" placeholder="Текст задачи..." onchange="onChangeInput(event)"></input>
+            <button onclick="handleClickAdd(event)">Добавить</button>
+        </div>
+        <script>
+            const ul = document.getElementById("tasks")
+            let taskText = '';
+            let tasks = ['Я хочу сделать список ','Купить продукты']
+            onChangeInput =(event)=>{
+                taskText = event.target.value
+                return taskText
+            }
+            function handleClickAdd(event){
+                document.getElementById('taskInput').value='';
+                if(!taskText == ''){
+                tasks.push(taskText)
+                taskText = '';
+                render()
+                }else{
+                    alert('Введите текст в поле!')
+                }
+            }
+            function handleClickRemove(event){
+                tasks.splice(event.target.id,1)
+                render()
+            }
+            function render(){
+                document.querySelectorAll('li').forEach(li => li.remove());
+                let i = 0;
+                tasks.map((task)=>{
+                    let li = document.createElement('li');
+                    let button = document.createElement('button')
+                    li.innerHTML = task +` <button id=${i} onclick="handleClickRemove(event)">X</>`;
+                    i +=1;
+                    ul.append(li)
+                })
+                i = 0;
+            }
+            document.addEventListener("DOMContentLoaded",render())
+        </script>
+    </body>
+</html>

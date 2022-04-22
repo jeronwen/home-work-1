@@ -45,6 +45,9 @@
     border: 1px solid #B05555;
     color: #fff;
   }
+  .buttons{
+    margin-left: 70px ;  
+  }
   
   .block {
     padding: 15px 30px;

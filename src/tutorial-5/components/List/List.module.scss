@@ -1,0 +1,16 @@
+.wrapper {
+  margin-left: 35%;
+  border-radius: 5px;
+  border: 1px solid #c2c1c1;
+  width: 22%;
+  background-color: rgba(255, 255, 255, 1);
+  h2 {
+    margin-left: 5%;
+    font-size: larger;
+  }
+  .List {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5%;
+  }
+}

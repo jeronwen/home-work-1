@@ -2,15 +2,17 @@
   margin-left: 35%;
   border-radius: 5px;
   border: 1px solid #c2c1c1;
-  width: 22%;
+  width: 30%;
   background-color: rgba(255, 255, 255, 1);
-  h2 {
+  p {
     margin-left: 5%;
-    font-size: larger;
   }
   .List {
     display: flex;
     justify-content: center;
     padding-bottom: 5%;
+    p {
+      font-size: small;
+    }
   }
 }

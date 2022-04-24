@@ -1,7 +1,5 @@
 import React from "react";
-import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import Stack from "@mui/material/Stack";
 import styles from "./Feedback.module.scss";
 import Button from "@mui/material/Button";
 
@@ -14,7 +12,7 @@ const FeedBack = ({ sendComment }) => {
   return (
     <div className={styles.Feedback}>
       <br></br>
-      <h1>Обратная связь</h1>
+      <h1>Обратная связь:</h1>
       <div className={styles.DivFields}>
         <TextField
           margin="normal"
@@ -25,8 +23,6 @@ const FeedBack = ({ sendComment }) => {
           onChange={(e) => {
             fullName = e.target.value;
           }}
-          //        value={value}
-          //          onChange={handleChange}
         />
         <TextField
           margin="normal"
@@ -37,8 +33,6 @@ const FeedBack = ({ sendComment }) => {
           onChange={(e) => {
             email = e.target.value;
           }}
-          // value={value}
-          //  onChange={handleChange}
         />
         <TextField
           margin="normal"

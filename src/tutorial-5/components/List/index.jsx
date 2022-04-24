@@ -9,34 +9,46 @@ import Typography from "@mui/material/Typography";
 import styles from "./List.module.scss";
 
 const ListReviews = () => {
+  let arrOfComments = [];
+
+  React.useEffect(() => {
+    console.log("DID MOUNT");
+    let arrOfComments = localStorage.getItem("comments")
+      ? JSON.parse(localStorage.getItem("comments"))
+      : [];
+  });
+
+  console.log(arrOfComments);
   return (
     <div className={styles.wrapper}>
       <h2>Отзывы:</h2>
-      <div className={styles.List}>
-        <List
-          sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
-        >
-          <ListItem alignItems="center">
-            <ListItemAvatar>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-            </ListItemAvatar>
-            <ListItemText
-              primary="Bad Guy"
-              secondary={
-                <React.Fragment>
-                  <Typography
-                    sx={{ display: "inline" }}
-                    component="span"
-                    variant="body2"
-                    color="text.primary"
-                  ></Typography>
-                  {"Anata no ken wa ka to onaji kurai tsuyoidesu"}
-                </React.Fragment>
-              }
-            />
-          </ListItem>
-        </List>
-      </div>
+      {arrOfCommentsarrOfComments.map((comment, index) => (
+        <div key={index} className={styles.List}>
+          <List
+            sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+          >
+            <ListItem alignItems="center">
+              <ListItemAvatar>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+              </ListItemAvatar>
+              <ListItemText
+                primary={comment.fullName}
+                secondary={
+                  <React.Fragment>
+                    <Typography
+                      sx={{ display: "inline" }}
+                      component="span"
+                      variant="body2"
+                      color="text.primary"
+                    ></Typography>
+                    {comment.text}
+                  </React.Fragment>
+                }
+              />
+            </ListItem>
+          </List>
+        </div>
+      ))}
     </div>
   );
 };

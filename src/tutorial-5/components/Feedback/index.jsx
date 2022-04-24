@@ -5,8 +5,12 @@ import Stack from "@mui/material/Stack";
 import styles from "./Feedback.module.scss";
 import Button from "@mui/material/Button";
 
-const FeedBack = () => {
-  console.log(styles);
+const FeedBack = ({ sendComment }) => {
+  //console.log()
+  let fullName;
+  let email;
+  let text;
+
   return (
     <div className={styles.Feedback}>
       <br></br>
@@ -18,6 +22,9 @@ const FeedBack = () => {
           label="Имя"
           multiline
           maxRows={4}
+          onChange={(e) => {
+            fullName = e.target.value;
+          }}
           //        value={value}
           //          onChange={handleChange}
         />
@@ -27,6 +34,9 @@ const FeedBack = () => {
           label="Почта"
           multiline
           maxRows={4}
+          onChange={(e) => {
+            email = e.target.value;
+          }}
           // value={value}
           //  onChange={handleChange}
         />
@@ -36,8 +46,16 @@ const FeedBack = () => {
           label="Текст..."
           multiline
           rows={4}
+          onChange={(e) => {
+            text = e.target.value;
+          }}
         />
-        <Button variant="contained">Отправить</Button>
+        <Button
+          variant="contained"
+          onClick={() => sendComment(fullName, email, text)}
+        >
+          Отправить
+        </Button>
       </div>
     </div>
   );

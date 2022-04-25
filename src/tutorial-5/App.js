@@ -6,27 +6,34 @@ import FeedBack from "./components/Feedback";
 
 export default function App() {
   const [comments, setComments] = React.useState([]);
-  //{
-  //  fullName: "Bad Guy",
-  //  email: "vasya@mail.ru",
-  //  createdAt: "Thu Oct 14 2021 13:41:01",
-  //  text: "Anata no ken wa ka to onaji kurai tsuyoidesu",
-  //},
+  const listReviewRef = React.useRef();
+
+  React.useEffect(() => {
+    const localComments = localStorage.getItem("comments")
+      ? JSON.parse(localStorage.getItem("comments"))
+      : [];
+    setComments(localComments);
+  }, [ListReviews]);
+
+  React.useEffect(() => {
+    localStorage.setItem("comments", JSON.stringify(comments));
+  }, [comments]);
+
   const sendComment = (fullName, email, text) => {
     let createdAt = `${new Date().toLocaleString("ru")}`;
     let newArr = { fullName, email, createdAt, text };
     setComments([...comments, newArr]);
-
-    /// console.log(comments);
   };
 
-  React.useEffect(() => {
-    localStorage.setItem("comments", JSON.stringify(comments));
-    console.log(comments);
-  }, [comments]);
+  const deleteComment = (indexList) => {
+    const newArr = comments.filter(
+      (comment, indexComment) => indexList !== indexComment
+    );
+    setComments(newArr);
+  };
   return (
     <div>
-      <ListReviews dataComments={comments} />
+      <ListReviews dataComments={comments} onDelteComment={deleteComment} />
       <FeedBack sendComment={sendComment} />
     </div>
   );

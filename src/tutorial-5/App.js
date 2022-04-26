@@ -13,7 +13,7 @@ export default function App() {
       ? JSON.parse(localStorage.getItem("comments"))
       : [];
     setComments(localComments);
-  }, [ListReviews]);
+  }, []);
 
   React.useEffect(() => {
     localStorage.setItem("comments", JSON.stringify(comments));

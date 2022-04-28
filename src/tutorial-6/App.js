@@ -4,6 +4,8 @@ import { About } from "./pages/About";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { FullPost } from "./components/FullArticle";
+import { NotFound } from "./components/NotFound";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   const pathname = window.location.pathname;
@@ -11,12 +13,13 @@ function App() {
   return (
     <>
       <Header />
-      {pathname === "/" && <Home />}
-      {pathname === "/about" && <About />}
-      {pathname === "/login" && <h1>Логин</h1>}
-      {pathname.includes("/post/") && (
-        <FullPost id={pathname.split("/").pop()} />
-      )}
+      <Routes>
+        <Route path="*" element={<NotFound />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/login" element={<h1>Логин</h1>} />
+        <Route path="/post/:id" element={<FullPost />} />
+      </Routes>
       <Footer />
     </>
   );

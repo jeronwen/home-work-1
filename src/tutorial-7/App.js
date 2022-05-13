@@ -9,6 +9,7 @@ function App() {
   const { handleSubmit, register, formState, reset } = useForm();
 
   const onSubmit = (values) => console.log("ФОРМА!", values);
+  const onClear = () => reset({ defaultValues });
 
   console.log(formState.errors);
 
@@ -89,19 +90,7 @@ function App() {
           >
             Зарегистрироваться
           </Button>
-          <Button
-            onClick={() =>
-              reset({
-                email: "",
-                firstName: "",
-                password: "",
-                lastName: "",
-                about: "",
-              })
-            }
-            variant="contained"
-            color="secondary"
-          >
+          <Button onClick={onClear} variant="contained" color="secondary">
             Очистить
           </Button>
         </div>
